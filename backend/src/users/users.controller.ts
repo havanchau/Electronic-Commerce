@@ -9,13 +9,19 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  findAll(): Promise<User[]> {
-    return this.userService.findAll();
+  async findAll(): Promise<any[]> {
+    const users = await this.userService.findAll();
+
+    return users.map(({ password, createdAt, updatedAt, id, isDel, phone, email, ...userResponse }) => userResponse);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<User> {
-    return this.userService.findOne(id);
+  async findOne(@Param('id') id: number): Promise<any> {
+    const user = await this.userService.findById(id);
+
+    const { password, ...userResponse} = user;
+
+    return userResponse;
   }
 
   @Post()

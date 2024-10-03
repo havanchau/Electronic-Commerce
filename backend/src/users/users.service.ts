@@ -17,8 +17,12 @@ export class UserService {
     return this.userRepository.find({ where: { isDel: false } });
   }
 
-  findOne(id: number): Promise<User> {
+  findById(id: number): Promise<User> {
     return this.userRepository.findOne({ where: { id, isDel: false } });
+  }
+
+  findByEmail(email: string): Promise<User> {
+    return this.userRepository.findOne({ where: { email, isDel: false } });
   }
 
   async create(createUserDto: CreateUserDto): Promise<User> {

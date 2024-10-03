@@ -25,4 +25,7 @@ export class User {
 
   @Column({ default: false })
   isDel: boolean;
+
+  @Column({ nullable: true })
+  refreshToken: string;
 }

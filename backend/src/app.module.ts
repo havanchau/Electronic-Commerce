@@ -3,6 +3,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoggerMiddleware } from '../logger/logger.middleware';
+import { UserModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -18,6 +20,8 @@ dotenv.config();
       entities: [__dirname + '/**/*.schema{.ts,.js}'],
       synchronize: true,
     }),
+    AuthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
