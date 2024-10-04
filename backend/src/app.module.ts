@@ -5,7 +5,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoggerMiddleware } from '../logger/logger.middleware';
 import { UserModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { ProductModule } from './products/products.module';
 import * as dotenv from 'dotenv';
+import { FeedbackModule } from './feedbacks/feedbacks.module';
 
 dotenv.config();
 @Module({
@@ -22,6 +24,8 @@ dotenv.config();
     }),
     AuthModule,
     UserModule,
+    ProductModule,
+    FeedbackModule,
   ],
   controllers: [AppController],
   providers: [AppService],

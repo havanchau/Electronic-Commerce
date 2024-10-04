@@ -1,22 +1,37 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
-import { Feedback } from '../feedbacks/feedbacks.schema';
+import { Feedback } from '../feedbacks/feedbacks.schema'
 
-@Entity('user')
-export class User {
+@Entity('product')
+export class Product {
   @PrimaryGeneratedColumn()
   id: number; 
 
   @Column({ length: 100 })
   name: string
 
-  @Column({ length: 10, unique: true })
-  phone: string
+  @Column()
+  price: number
 
-  @Column({ length: 150, unique: true })
-  email: string;
+  @Column()
+  desc: string
 
-  @Column({ length: 255 })
-  password: string;
+  @Column({ length: 200 })
+  category: string;
+
+  @Column()
+  stock: number
+
+  @Column({ length: 200 })
+  brand: string;
+
+  @Column()
+  benefit: string;
+
+  @Column()
+  capacity: string;
+
+  @Column()
+  rating: number
 
   @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
@@ -26,9 +41,6 @@ export class User {
 
   @Column({ default: false })
   isDel: boolean;
-
-  @Column({ nullable: true })
-  refreshToken: string;
 
   @OneToMany(() => Feedback, (feedback) => feedback.product)
   feedbacks: Feedback[];
