@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Between, Like, Repository } from 'typeorm';
 import { Product } from './products.schema';
 import { CreateProductDto } from './dto/create-products.dto';
 import { UpdateProductDto } from './dto/update-products.dto';
@@ -33,4 +33,45 @@ export class ProductService {
   async remove(id: number): Promise<void> {
     await this.productRepository.update(id, { isDel: true });
   }
+
+  async findProductsAdvanced(query: Record<string, any>): Promise<Product[]> {
+    const where: any = {};
+
+    if (query.name) {
+      where.name = Like(`%${query.name}%`);
+    }
+
+    if (query.category) {
+      where.category = query.category;
+    }
+
+    if (query.minPrice || query.maxPrice) {
+      where.price = Between(query.minPrice || 0, query.maxPrice || Number.MAX_SAFE_INTEGER);
+    }
+
+    if (query.brand) {
+      where.brand = query.brand;
+    }
+
+    if (query.capacity) {
+      where.capacity = query.capacity;
+    }
+
+    if (query.rating) {
+      where.rating = query.rating;
+    }
+
+    if (query.benefit) {
+      where.benefit = query.benefit;
+    }
+
+    const options: any = {
+      where,
+      order: query.sortBy && query.order ? { [query.sortBy]: query.order.toUpperCase() } : {},
+      take: query.limit ? parseInt(query.limit) : undefined,
+    };
+
+    return await this.productRepository.find(options);
+  }
+  
 }
