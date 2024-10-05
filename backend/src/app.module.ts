@@ -8,10 +8,14 @@ import { AuthModule } from './auth/auth.module';
 import { ProductModule } from './products/products.module';
 import * as dotenv from 'dotenv';
 import { FeedbackModule } from './feedbacks/feedbacks.module';
+import { ConfigModule } from '@nestjs/config';
 
 dotenv.config();
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DB_HOST,
