@@ -5,6 +5,7 @@ import { User } from './users.schema';
 import { CreateUserDto } from './dto/create-users.dto';
 import { UpdateUserDto } from './dto/update-users.dto';
 import * as bcrypt from 'bcrypt';
+import { USER_EXCEPTION } from '../../exceptions/index';
 
 @Injectable()
 export class UserService {
@@ -34,7 +35,7 @@ export class UserService {
 
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     const user = await this.userRepository.findOne({ where: { id, isDel: false } });
-    if (!user) throw new Error('User not found');
+    if (!user) throw USER_EXCEPTION.NOT_FOUND();
 
     if (updateUserDto.password) {
       const saltRounds = 10;

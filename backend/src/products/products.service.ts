@@ -4,6 +4,7 @@ import { Between, Like, Repository } from 'typeorm';
 import { Product } from './products.schema';
 import { CreateProductDto } from './dto/create-products.dto';
 import { UpdateProductDto } from './dto/update-products.dto';
+import { PRODUCT_EXCEPTION } from '../../exceptions/index';
 
 @Injectable()
 export class ProductService {

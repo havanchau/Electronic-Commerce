@@ -5,11 +5,13 @@ import { LoginDto } from './dto/login.dto';
 import { Response, Request } from 'express';
 import { JwtStrategy } from './jwt.strategy';
 import { RefreshTokenStrategy } from './refresh-token.strategy';
+import { Public } from 'decorators/puclic.decorator';
 
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
 
+  @Public()
   @Post('register')
   async register(@Body() registerDto: RegisterDto, @Res() res: Response) {
     const tokens = await this.authService.register(registerDto);
@@ -17,6 +19,7 @@ export class AuthController {
     return res.send(tokens);
   }
 
+  @Public()
   @Post('login')
   async login(@Body() loginDto: LoginDto, @Res() res: Response) {
     const tokens = await this.authService.login(loginDto);

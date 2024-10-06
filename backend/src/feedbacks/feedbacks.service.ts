@@ -5,6 +5,7 @@ import { Feedback } from './feedbacks.schema';
 import { CreateFeedbackDto } from './dto/create-feedbacks.dto';
 import { Product } from '../products/products.schema';
 import { User } from '../users/users.schema';
+import { FEEDBACK_EXCEPTION } from '../../exceptions/index';
 
 @Injectable()
 export class FeedbackService {
@@ -25,7 +26,7 @@ export class FeedbackService {
     const user = await this.userRepository.findOne({ where: { id: userId } });
 
     if (!product) {
-      throw new Error('Product not found or deleted');
+      throw FEEDBACK_EXCEPTION.NOT_FOUND();
     }
 
     const feedback = this.feedbackRepository.create({
