@@ -1,1 +1,1 @@
-# Electronic-Commerce - HK 241
+# Electronic-Commerce Project
