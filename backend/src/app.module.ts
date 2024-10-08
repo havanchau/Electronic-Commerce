@@ -1,4 +1,4 @@
-import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer, OnModuleInit } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -11,8 +11,10 @@ import { FeedbackModule } from './feedback/feedback.module';
 import { ConfigModule } from '@nestjs/config';
 import { ChatModule } from './chat/chat.module';
 import { NotificationModule } from './notification/notification.module';
+import { SocketService } from '../socket.io/socket';
 
 dotenv.config();
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -36,12 +38,17 @@ dotenv.config();
     NotificationModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, SocketService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     // consumer
     //   .apply(LoggerMiddleware)
     //   .forRoutes('*');
+  }
+  
+  async onModuleInit(server: any) {
+    const socketService = new SocketService();
+    socketService.init(server);
   }
 }

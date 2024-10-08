@@ -15,7 +15,7 @@ export class UserController {
   @ApiResponse({ status: 200, description: 'Successfully retrieved list of users.' })
   async findAll(): Promise<any[]> {
     const users = await this.userService.findAll();
-    return users.map(({ password, createdAt, updatedAt, id, isDel, phone, email, ...userResponse }) => userResponse);
+    return users.map(({ name, role, createdAt, updatedAt, email, phone }) => ({ name, role, createdAt, updatedAt, email, phone }));
   }
 
   @Get(':id')
