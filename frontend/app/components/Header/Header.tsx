@@ -16,8 +16,10 @@ import AdbIcon from "@mui/icons-material/Adb";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import SearchIcon from "@mui/icons-material/Search";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const pages = ["Products", "About us", "More"];
+const pages = ["Home", "Shop", "About", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
@@ -70,10 +72,17 @@ function ResponsiveAppBar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-          <IconButton
-              size="large"
-              sx={{ marginRight: "18px" }}
-            >
+            <IconButton size="large" sx={{ marginRight: "18px" }}>
+              <Badge badgeContent={6} color="primary">
+                <FavoriteIcon />
+              </Badge>
+            </IconButton>
+            <IconButton size="large" sx={{ marginRight: "18px" }}>
+              <Badge color="primary">
+                <SearchIcon />
+              </Badge>
+            </IconButton>
+            <IconButton size="large" sx={{ marginRight: "18px" }}>
               <Badge badgeContent={10} color="primary">
                 <ShoppingCartIcon />
               </Badge>
@@ -169,10 +178,17 @@ function ResponsiveAppBar() {
             ))}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <IconButton
-              size="large"
-              sx={{ marginRight: "18px" }}
-            >
+            <IconButton size="large" sx={{ marginRight: "18px" }}>
+              <Badge badgeContent={6} color="secondary">
+                <FavoriteIcon />
+              </Badge>
+            </IconButton>
+            <IconButton size="large" sx={{ marginRight: "18px" }}>
+              <Badge color="primary">
+                <SearchIcon />
+              </Badge>
+            </IconButton>
+            <IconButton size="large" sx={{ marginRight: "18px" }}>
               <Badge badgeContent={10} color="primary">
                 <ShoppingCartIcon />
               </Badge>
