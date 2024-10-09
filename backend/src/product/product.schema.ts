@@ -1,5 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { Feedback } from '../feedback/feedback.schema'
+import { Image } from '../image/image.schema'
 
 @Entity('product')
 export class Product {
@@ -44,4 +45,7 @@ export class Product {
 
   @OneToMany(() => Feedback, (feedback) => feedback.product)
   feedbacks: Feedback[];
+
+  @OneToMany(() => Image, (image) => image.product)
+  images: Image[];
 }
