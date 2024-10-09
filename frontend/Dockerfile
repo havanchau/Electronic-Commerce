@@ -8,13 +8,10 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-# Copy all backend files
+# Copy all frontend files
 COPY . .
 
-# Copy environment variables into the Docker image
-COPY .env .env
-
-# Build the NestJS app
+# Build the Next.js app
 RUN npm run build
 
 # Final image
@@ -25,8 +22,8 @@ WORKDIR /app
 # Copy the built app from the builder
 COPY --from=builder /app ./
 
-# Expose backend port
-EXPOSE 3001
+# Expose frontend port
+EXPOSE 3000
 
-# Run the NestJS app
-CMD ["npm", "run", "start:prod"]
+# Start the Next.js app
+CMD ["npm", "start"]
