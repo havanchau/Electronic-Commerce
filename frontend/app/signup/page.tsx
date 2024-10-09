@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { AppProvider } from "@toolpad/core";
 import Typography from "@mui/material/Typography";
-import authService from "@/services/auth.service";
+import authService from "@/services/auth/auth.service";
 import { showToast } from "@/app/components/ToastContainer/ToastContainer";
 import { useRouter } from "next/navigation";
 
