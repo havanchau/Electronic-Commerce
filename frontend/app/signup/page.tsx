@@ -9,10 +9,13 @@ import Button from "@mui/material/Button";
 import { AppProvider } from "@toolpad/core";
 import Typography from "@mui/material/Typography";
 import authService from "@/services/auth.service";
+import { showToast } from "@/app/components/ToastContainer/ToastContainer";
+import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
   const theme = useTheme();
-  
+  const router = useRouter();
+
   const [formData, setFormData] = React.useState({
     email: "",
     name: "",
@@ -31,8 +34,17 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await authService.register(formData.email, formData.name, formData.password, formData.phone);
-    console.log(res);
+    try {
+      const res = await authService.register(formData.email, formData.name, formData.password, formData.phone);
+      showToast("Registration successful!", "success");
+  
+      localStorage.setItem("user", JSON.stringify(res));
+      router.push("/");
+    }
+    catch (error) {
+      console.error(error);
+      showToast("Registration failed! Please try again.", "error");
+    }
 
   };
 

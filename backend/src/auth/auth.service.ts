@@ -16,7 +16,9 @@ export class AuthService {
     const { email, password, phone, name } = registerDto;
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await this.userService.create({ email, password: hashedPassword, phone, name });
-    return this.generateTokens(user);
+
+    delete user.password;
+    return { ...this.generateTokens(user), ...user };
   }
 
   async login(loginDto: LoginDto): Promise<any> {
@@ -27,7 +29,8 @@ export class AuthService {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    return this.generateTokens(user);
+    delete user.password;
+    return { ...this.generateTokens(user), ...user };
   }
 
   async logout(userId: number): Promise<void> {

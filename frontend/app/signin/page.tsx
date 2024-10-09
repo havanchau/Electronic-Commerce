@@ -8,9 +8,13 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { AppProvider } from "@toolpad/core";
 import Typography from "@mui/material/Typography";
+import authService from "@/services/auth.service";
+import { useRouter } from "next/navigation";
+import { showToast } from "../components/ToastContainer/ToastContainer";
 
 export default function SignInPage() {
   const theme = useTheme();
+  const router = useRouter();
   
   const [formData, setFormData] = React.useState({
     email: "",
@@ -24,9 +28,17 @@ export default function SignInPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Sign In Data: ", formData);
-
-    alert(`Signing in with: ${JSON.stringify(formData)}`);
+    try {
+      const res = await authService.login(formData.email, formData.password);
+      showToast("Login successful!", "success");
+  
+      localStorage.setItem("user", JSON.stringify(res));
+      router.push("/");
+    }
+    catch (error) {
+      console.error(error);
+      showToast("Login failed! Please try again.", "error");
+    }
   };
 
   return (
