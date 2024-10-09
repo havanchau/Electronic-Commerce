@@ -39,3 +39,20 @@ body {
 #nprogress .peg {
   box-shadow: 0 0 10px #29d, 0 0 5px #29d;
 }
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-black {
+  color: #0a0a0a;
+}
+
+.primary {
+  background-color: #ffffff !important;
+}
+
+.secondary {
+
+}
+

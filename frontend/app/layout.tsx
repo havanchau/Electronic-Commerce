@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LoadingSpinner from "@/app/components/LoadingSpinner/LoadingSpinner";
 import ToastComponent from "@/app/components/ToastContainer/ToastContainer";
+import Header from "./components/Header/Header";
+import "./globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`} style={{ margin: 0 }}
       >
         {loading ? (
           <div style={{ 
@@ -58,6 +60,7 @@ export default function RootLayout({
         ) : (
           <>
             <ToastComponent />
+            <Header />
             {children}
           </>
         )}
