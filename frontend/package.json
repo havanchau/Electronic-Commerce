@@ -15,12 +15,14 @@
     "@toolpad/core": "^0.7.0",
     "axios": "^1.7.7",
     "next": "14.2.14",
+    "nprogress": "^0.2.0",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
     "@types/babel__core": "^7.20.5",
     "@types/node": "^20",
+    "@types/nprogress": "^0.2.3",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
