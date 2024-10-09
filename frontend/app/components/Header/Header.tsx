@@ -22,7 +22,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 const pages = ["Home", "Shop", "About", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function ResponsiveAppBar() {
+function Header() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -237,4 +237,4 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default Header;

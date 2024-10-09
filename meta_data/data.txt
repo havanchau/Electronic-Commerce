@@ -1,0 +1,22 @@
+INSERT INTO product (name, price, `desc`, category, stock, brand, benefit, capacity, rating)
+VALUES
+('Eco-friendly Shampoo', 29.99, 'A biodegradable, eco-friendly shampoo for all hair types.', 'Hair Care', 50, 'EcoBrand', 'Improves hair strength and shine.', '500ml', 4.5),
+('Natural Toothpaste', 7.99, 'Made with natural ingredients to clean and whiten teeth.', 'Oral Care', 100, 'GreenSmile', 'Whitening and refreshing.', '100g', 4.2),
+('Organic Hand Soap', 4.99, 'Eco-friendly hand soap with organic ingredients.', 'Body Care', 150, 'NatureSoft', 'Gentle on skin.', '300ml', 4.6),
+('Bamboo Toothbrush', 3.5, 'Sustainable bamboo toothbrush with soft bristles.', 'Oral Care', 200, 'EcoBrush', 'Eco-friendly and biodegradable.', 'Single Pack', 4.8),
+('Reusable Water Bottle', 19.99, 'Eco-friendly, stainless steel water bottle.', 'Lifestyle', 80, 'GreenWave', 'Keeps water cold for 24 hours.', '1L', 4.7),
+('Biodegradable Trash Bags', 8.99, 'Eco-friendly trash bags made from biodegradable materials.', 'Home Care', 300, 'EarthGuard', 'Eco-friendly waste disposal.', '50 Bags', 4.3),
+('Organic Cotton Towel', 12.99, 'Soft, absorbent towel made from organic cotton.', 'Home Care', 60, 'PureTowel', 'Hypoallergenic and eco-friendly.', '1 Towel', 4.1),
+('Recycled Paper Notebook', 5.99, 'Notebook made from 100% recycled paper.', 'Office Supplies', 120, 'EcoNote', 'Sustainable and eco-friendly.', '200 Pages', 4.5),
+('Organic Face Cream', 24.99, 'Moisturizing face cream with organic ingredients.', 'Skin Care', 75, 'EarthBeauty', 'Nourishes and softens skin.', '50ml', 4.9),
+('Compostable Cutlery Set', 9.99, 'Eco-friendly cutlery set made from compostable materials.', 'Kitchen Supplies', 250, 'GreenMeal', 'Compostable and sustainable.', '1 Set (Fork, Knife, Spoon)', 4.2),
+('Plant-Based Laundry Detergent', 15.99, 'Eco-friendly detergent made from plant-based ingredients.', 'Home Care', 90, 'NatureClean', 'Effective cleaning, gentle on fabrics.', '1L', 4.7),
+('Eco-friendly Sunscreen', 18.99, 'Mineral-based sunscreen with no harmful chemicals.', 'Skin Care', 110, 'SunSafe', 'Safe for skin and the environment.', '150ml', 4.6),
+('Reusable Shopping Bag', 2.99, 'Durable, reusable shopping bag made from recycled materials.', 'Lifestyle', 400, 'EcoCarry', 'Reduces plastic waste.', '1 Bag', 4.4),
+('Vegan Lip Balm', 3.99, 'Natural, vegan lip balm with organic ingredients.', 'Skin Care', 130, 'NatureLips', 'Moisturizes and protects lips.', '5g', 4.5),
+('Eco-friendly Yoga Mat', 39.99, 'Non-toxic, eco-friendly yoga mat.', 'Fitness', 40, 'EcoMat', 'Non-slip and biodegradable.', '1 Mat', 4.9),
+('Organic Body Lotion', 14.99, 'Moisturizing body lotion made from organic ingredients.', 'Body Care', 85, 'GreenGlow', 'Hydrates and nourishes skin.', '250ml', 4.7),
+('Reusable Coffee Cup', 12.99, 'Eco-friendly coffee cup made from sustainable materials.', 'Lifestyle', 150, 'EcoSip', 'Reusable and eco-friendly.', '500ml', 4.8),
+('Natural Deodorant', 8.99, 'Aluminum-free, natural deodorant with organic ingredients.', 'Body Care', 140, 'PurePits', 'Long-lasting freshness.', '75g', 4.3),
+('Eco-friendly Dish Soap', 6.99, 'Non-toxic, biodegradable dish soap.', 'Home Care', 130, 'EarthClean', 'Gentle on hands, tough on grease.', '500ml', 4.5),
+('Reusable Straw Set', 5.99, 'Set of reusable stainless steel straws.', 'Lifestyle', 170, 'EcoSip', 'Reduces single-use plastic waste.', '1 Set (4 Straws + Cleaner)', 4.6);

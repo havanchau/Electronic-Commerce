@@ -6,7 +6,10 @@ import { usePathname } from "next/navigation";
 import LoadingSpinner from "@/app/components/LoadingSpinner/LoadingSpinner";
 import ToastComponent from "@/app/components/ToastContainer/ToastContainer";
 import Header from "./components/Header/Header";
+import { LanguageProvider } from "@/context/Lang/LangContext";
+import { AuthProvider } from "@/context/Auth/AuthContext";
 import "./globals.css";
+import Footer from "./components/Footer/Footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,6 +29,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
+
+  const hideHeaderRoutes = ['/signin', '/signup', '/not-found'];
+
   const [loading, setLoading] = useState(true); 
   useEffect(() => {
     setLoading(true);
@@ -42,28 +48,31 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`} style={{ margin: 0 }}
       >
-        {loading ? (
-          <div style={{ 
-            position: 'fixed', 
-            top: 0, 
-            left: 0, 
-            width: '100%', 
-            height: '100%', 
-            backgroundColor: 'white',
-            zIndex: 9999,
-            display: 'flex',
-            justifyContent: 'center', 
-            alignItems: 'center' 
-          }}>
-            <LoadingSpinner />
-          </div>
-        ) : (
-          <>
-            <ToastComponent />
-            <Header />
-            {children}
-          </>
-        )}
+        <AuthProvider>
+          {loading ? (
+            <div style={{ 
+              position: 'fixed', 
+              top: 0, 
+              left: 0, 
+              width: '100%', 
+              height: '100%', 
+              backgroundColor: 'white',
+              zIndex: 9999,
+              display: 'flex',
+              justifyContent: 'center', 
+              alignItems: 'center' 
+            }}>
+              <LoadingSpinner />
+            </div>
+          ) : (
+            <LanguageProvider>
+              <ToastComponent />
+              {!hideHeaderRoutes.includes(pathname) && <Header />}
+              {children}
+              {!hideHeaderRoutes.includes(pathname) && <Footer />}
+            </LanguageProvider>
+          )}
+        </AuthProvider>
       </body>
     </html>
   );
