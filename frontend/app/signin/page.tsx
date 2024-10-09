@@ -11,10 +11,12 @@ import Typography from "@mui/material/Typography";
 import authService from "@/services/auth/auth.service";
 import { useRouter } from "next/navigation";
 import { showToast } from "../components/ToastContainer/ToastContainer";
+import { useLanguage } from "@/context/Lang/LangContext";
 
 export default function SignInPage() {
   const theme = useTheme();
   const router = useRouter();
+  const lang = useLanguage();
   
   const [formData, setFormData] = React.useState({
     email: "",
@@ -30,14 +32,14 @@ export default function SignInPage() {
     e.preventDefault();
     try {
       const res = await authService.login(formData.email, formData.password);
-      showToast("Login successful!", "success");
+      showToast(lang.language.loginSuccess, "success");
   
       localStorage.setItem("user", JSON.stringify(res));
       router.push("/");
     }
     catch (error) {
       console.error(error);
-      showToast("Login failed! Please try again.", "error");
+      showToast(lang.language.loginFail, "error");
     }
   };
 
@@ -55,7 +57,7 @@ export default function SignInPage() {
         padding={2}
       >
         <Typography variant="h4" align="center" gutterBottom>
-          Sign In
+          {lang.language.login}
         </Typography>
         <TextField
           fullWidth
@@ -85,17 +87,17 @@ export default function SignInPage() {
           fullWidth 
           style={{ marginTop: 40, height: 60 }}
         >
-          Sign In
+          {lang.language.login}
         </Button>
         <Grid container mt={2}>
           <Grid item xs>
             <Link href="#" variant="body2">
-              Forgot password?
+              {lang.language.forgetPassword}
             </Link>
           </Grid>
           <Grid item>
             <Link href="/signup" variant="body2">
-              {"Don't have an account? Sign Up"}
+              {lang.language.alreadyHaveAccount}
             </Link>
           </Grid>
         </Grid>

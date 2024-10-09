@@ -11,10 +11,12 @@ import Typography from "@mui/material/Typography";
 import authService from "@/services/auth/auth.service";
 import { showToast } from "@/app/components/ToastContainer/ToastContainer";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/context/Lang/LangContext";
 
 export default function RegisterPage() {
   const theme = useTheme();
   const router = useRouter();
+  const lang = useLanguage();
 
   const [formData, setFormData] = React.useState({
     email: "",
@@ -36,14 +38,14 @@ export default function RegisterPage() {
     e.preventDefault();
     try {
       const res = await authService.register(formData.email, formData.name, formData.password, formData.phone);
-      showToast("Registration successful!", "success");
+      showToast(lang.language.registerSuccess, "success");
   
       localStorage.setItem("user", JSON.stringify(res));
       router.push("/");
     }
     catch (error) {
       console.error(error);
-      showToast("Registration failed! Please try again.", "error");
+      showToast(lang.language.registerFail, "error");
     }
 
   };
@@ -62,7 +64,7 @@ export default function RegisterPage() {
         padding={2}
       >
         <Typography variant="h4" align="center" gutterBottom>
-          Sign up
+          {lang.language.register}
         </Typography>
         <TextField
           fullWidth
@@ -107,17 +109,17 @@ export default function RegisterPage() {
           required
         />
         <Button type="submit" variant="contained" color="primary" fullWidth style={{ marginTop: 40, height: 60 }}>
-          Register
+          {lang.language.register}
         </Button>
         <Grid container mt={2}>
           <Grid item xs>
             <Link href="#" variant="body2">
-              Forgot password?
+              {lang.language.forgetPassword}
             </Link>
           </Grid>
           <Grid item>
             <Link href="/signin" variant="body2">
-              {"Have an account already? Log In"}
+              {lang.language.dontHaveAccount}
             </Link>
           </Grid>
         </Grid>
