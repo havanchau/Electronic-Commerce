@@ -29,13 +29,6 @@ export class UserController {
     return userResponse;
   }
 
-  @Post()
-  @ApiOperation({ summary: 'Create a new user' })
-  @ApiResponse({ status: 201, description: 'Successfully created user.' })
-  create(@Body() createUserDto: CreateUserDto): Promise<User> {
-    return this.userService.create(createUserDto);
-  }
-
   @Put(':id')
   @ApiOperation({ summary: 'Update an existing user' })
   @ApiParam({ name: 'id', description: 'ID of the user', type: Number })

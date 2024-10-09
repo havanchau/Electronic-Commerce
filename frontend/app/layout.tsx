@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import LoadingSpinner from "@/app/components/LoadingSpinner/LoadingSpinner";
+import ToastComponent from "@/app/components/ToastContainer/ToastContainer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -55,7 +56,10 @@ export default function RootLayout({
             <LoadingSpinner />
           </div>
         ) : (
-          children
+          <>
+            <ToastComponent />
+            {children}
+          </>
         )}
       </body>
     </html>
