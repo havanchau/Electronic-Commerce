@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
 
-  const hideHeaderRoutes = ['/signin', '/signup'];
+  const hideHeaderRoutes = ['/signin', '/signup', '/not-found'];
 
   const [loading, setLoading] = useState(true); 
   useEffect(() => {

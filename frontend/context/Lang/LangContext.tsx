@@ -10,7 +10,7 @@ type LanguageContextType = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguage] = useState(viLang);
+  const [language, setLanguage] = useState(engLang);
 
   const switchLanguage = (lang: string) => {
     if (lang === 'vi') {
