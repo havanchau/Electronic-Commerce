@@ -23,11 +23,11 @@ This is an e-commerce website project for eco-friendly cosmetics products. The p
 
     Set Up Backend
 
-    Navigate to the backend folder:
-        cd backend
+        Navigate to the backend folder:
+            cd backend
 
-    Install the necessary packages:
-        npm install
+        Install the necessary packages:
+            npm install
 
 Configure the MySQL connection in the .env file.
 
@@ -36,14 +36,14 @@ Run the backend application:
 
 Set Up Frontend
 
-Navigate to the frontend folder:
-    cd frontend
+        Navigate to the frontend folder:
+            cd frontend
 
-Install the necessary packages:
-    npm install
+        Install the necessary packages:
+            npm install
 
-Run the frontend application:
-    npm run dev
+        Run the frontend application:
+            npm run dev
 
 API Documentation
 
