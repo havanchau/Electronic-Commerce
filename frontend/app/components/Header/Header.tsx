@@ -18,6 +18,9 @@ import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import Image from "next/image";
+import { Images } from "@/images";
+import { useLanguage } from "@/context/Lang/LangContext";
 
 const pages = ["Home", "Shop", "About", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -29,6 +32,8 @@ function Header() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null
   );
+
+  const language = useLanguage();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -45,6 +50,13 @@ function Header() {
     setAnchorElUser(null);
   };
 
+  const handleChangeLanguage = (event: React.MouseEvent<HTMLElement>) => {
+    const lang = "vi";
+    console.log("Check");
+    localStorage.setItem("lang", lang === "vi" ? "vi" : "en");
+    language.switchLanguage(lang === "vi" ? "vi" : "en");
+  };
+
   return (
     <AppBar position="static" className="primary">
       <Container
@@ -53,6 +65,12 @@ function Header() {
         sx={{ maxWidth: "100%", padding: "0 50px" }}
       >
         <Toolbar disableGutters>
+          <Image
+            src={Images.logo}
+            alt="Logo"
+            width={40}
+            style={{ objectFit: "cover", marginRight: 12 }}
+          />
           <Typography
             variant="h6"
             noWrap
@@ -77,11 +95,15 @@ function Header() {
                 <FavoriteIcon />
               </Badge>
             </IconButton>
-            <IconButton size="large" sx={{ marginRight: "18px" }}>
-              <Badge color="primary">
+            <IconButton
+              size="large"
+              sx={{ marginRight: "18px" }}
+            >
+              {/* <Badge color="primary"> */}
                 <SearchIcon />
-              </Badge>
+              {/* </Badge> */}
             </IconButton>
+
             <IconButton size="large" sx={{ marginRight: "18px" }}>
               <Badge badgeContent={10} color="primary">
                 <ShoppingCartIcon />
@@ -135,7 +157,6 @@ function Header() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap

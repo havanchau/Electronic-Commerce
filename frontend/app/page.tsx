@@ -1,8 +1,12 @@
+"use client";
 import Image from "next/image";
 import { Images } from "@/images";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
+import { useLanguage } from "@/context/Lang/LangContext";
 
 export default function Home() {
+  const lang = useLanguage();
+
   return (
     <Box>
       <Box
@@ -30,16 +34,33 @@ export default function Home() {
             height: "80%",
             width: "40%",
             bgcolor: "#FFF3E3",
-            padding: 10, 
+            padding: 10,
             boxShadow: 2,
           }}
         >
-          <Typography variant="h4" gutterBottom>
-            Eco-Friendly Products
+          <Typography variant="h5" gutterBottom fontWeight={600}>
+            {lang.language.newArrival}
+          </Typography>
+          <Typography
+            variant="h3"
+            gutterBottom
+            sx={{ fontWeight: "800", color: "#B88E2F" }}
+          >
+            {lang.language.discoverCollection}
           </Typography>
           <Typography variant="body1">
-            Discover our range of eco-friendly products designed to help you lead a sustainable lifestyle.
+            {lang.language.introduceContent}
           </Typography>
+          <Box
+            style={{
+              marginTop: 60,
+              marginLeft: 460
+            }}
+          >
+            <Button variant="contained" className="medium-btn" style={{ backgroundColor: '#B88E2F' }}>
+              {lang.language.buyNow}
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>
