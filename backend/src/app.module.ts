@@ -12,6 +12,8 @@ import { ConfigModule } from '@nestjs/config';
 import { ChatModule } from './chat/chat.module';
 import { NotificationModule } from './notification/notification.module';
 import { SocketService } from '../socket.io/socket';
+import { APP_GUARD } from '@nestjs/core';
+import { JwtAuthGuard } from './auth/jwt-auth.guard';
 
 dotenv.config();
 
@@ -42,9 +44,9 @@ dotenv.config();
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    // consumer
-    //   .apply(LoggerMiddleware)
-    //   .forRoutes('*');
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes('*');
   }
   
   async onModuleInit(server: any) {
