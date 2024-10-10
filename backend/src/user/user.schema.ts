@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { Feedback } from '../feedback/feedback.schema';
 import { UserRole } from 'enum/role';
+import { Lang } from 'enum/lang';
 
 @Entity('user')
 export class User {
@@ -40,4 +41,14 @@ export class User {
     default: UserRole.CUSTOMER,
   })
   role: UserRole;
+
+  @Column({
+    type: 'enum',
+    enum: Lang,
+    default: Lang.EN,
+  })
+  lang: Lang;
+
+  @Column({ default: false })
+  isVerified: boolean;
 }
