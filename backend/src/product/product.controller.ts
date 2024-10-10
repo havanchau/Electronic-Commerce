@@ -4,6 +4,7 @@ import { ProductService } from './product.service';
 import { Product } from './product.schema';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { Public } from 'decorators/public.decorator';
 
 @ApiTags('Products')
 @Controller('products')
@@ -21,6 +22,7 @@ export class ProductController {
   }
 
   // Get all products
+  @Public()
   @Get()
   @ApiOperation({ summary: 'Retrieve all products' })
   @ApiResponse({ status: 200, description: 'List of all products', type: [Product] })
@@ -29,6 +31,7 @@ export class ProductController {
   }
 
   // Advanced search for products
+  @Public()
   @Get('search')
   @ApiOperation({ summary: 'Search products based on query' })
   @ApiResponse({ status: 200, description: 'List of products matching the search', type: [Product] })
@@ -37,6 +40,7 @@ export class ProductController {
   }
 
   // Get a product by ID
+  @Public()
   @Get(':id')
   @ApiOperation({ summary: 'Retrieve a product by its ID' })
   @ApiParam({ name: 'id', description: 'Product ID', type: 'number' })

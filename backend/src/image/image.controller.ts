@@ -3,6 +3,7 @@ import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ImageService } from './image.service';
 import { CreateImageDto } from './dto/create-image.dto';
 import { Image } from './image.schema';
+import { Public } from 'decorators/public.decorator';
 
 @ApiTags('Images')
 @Controller('images')
@@ -16,6 +17,7 @@ export class ImageController {
     return this.imageService.create(createImageDto);
   }
 
+  @Public()
   @Get('product/:id')
   @ApiOperation({ summary: 'Get all images for a product' })
   @ApiResponse({ status: 200, description: 'List of images for the specified product', type: [Image] })
